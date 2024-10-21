@@ -4,7 +4,6 @@ const DYNAMIC_CACHE = 'dynamic-v1'
 const INMUTABLE_CACHE = 'inmutable-v1'
 
 const APP_SHELL =[
-    '/',
     'index.html',
     'css/style.css',
     'img/favicon.ico',
@@ -35,7 +34,7 @@ self.addEventListener('install', e =>{
 })
 
 self.addEventListener('activate', e=>{
-    const respuesta = cache.keys().then(keys => {
+    const respuesta = caches.keys().then(keys => {
         keys.forEach(key => {
             if( key !== STATIC_CACHE && key.includes('static')){
                 return caches.delete(key)
